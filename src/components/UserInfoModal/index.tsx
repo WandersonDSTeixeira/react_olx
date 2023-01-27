@@ -6,21 +6,21 @@ type Props = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const UserInfoModal = ({ open, children, setOpen }: Props) => {
+export const UserInfoModal = ( props: Props) => {
     const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if ((e.target as HTMLDivElement).classList.contains('modalBg')) {
-            setOpen(false);
+            props.setOpen(false);
         }
     }
 
     return (
         <ModalArea
-            open={open ?? false}
+            open={props.open ?? false}
             onClick={handleModalClick}
             className='modalBg'
         >
             <div className='container'>
-                {children}
+                {props.children}
             </div>
         </ModalArea>
     );

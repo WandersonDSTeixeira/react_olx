@@ -7,22 +7,22 @@ type Props = {
     confirmDeletion: boolean;
 }
 
-export const UserAdsModal = ({ open, children, setOpen, confirmDeletion }: Props) => {
+export const UserAdsModal = (props: Props) => {
     const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if ((e.target as HTMLDivElement).classList.contains('modalBg')) {
-            setOpen(false);
+            props.setOpen(false);
         }
     }
 
     return (
         <ModalArea
-            open={open ?? false}
+            open={props.open ?? false}
             onClick={handleModalClick}
             className='modalBg'
-            confirmDeletion={confirmDeletion ?? false}
+            confirmDeletion={props.confirmDeletion ?? false}
         >
             <div className='container'>
-                {children}
+                {props.children}
             </div>
         </ModalArea>
     );

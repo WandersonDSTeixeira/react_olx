@@ -5,7 +5,7 @@ export const isLogged = () => {
     return (token) ? true : false;
 }
 
-export const doLogin = (token: string, rememberPassword: boolean = false ) => {
+export const doLogin = (token: string) => {
     Cookies.set('token', token);
 }
 
