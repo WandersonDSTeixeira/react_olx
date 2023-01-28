@@ -168,8 +168,16 @@ const UserPage = () => {
     }
 
     const handleImageDelete = (e: React.MouseEvent<HTMLImageElement>, index: number) => {
-        imgIndexes.push(index);
         const target = e.target as HTMLImageElement;
+
+        if (imgIndexes.includes(index)) {
+            target.style.border = '0';
+            const imgIndex = imgIndexes.findIndex(n => n === index);
+            imgIndexes.splice(imgIndex, 1);
+            return;
+        }
+        
+        imgIndexes.push(index);
         target.style.border = '2px solid #F00';
     }
 
@@ -195,18 +203,11 @@ const UserPage = () => {
         fData.append('status', status.toString());
 
         const adImages2 = [...adImages]
-        
-        const uniqueIndexes: number[] = [];
-        imgIndexes.forEach((u) => {
-            if (!uniqueIndexes.includes(u)) {
-                uniqueIndexes.push(u);
-            }
-        })
 
-        uniqueIndexes.sort((a, b) => b - a);
+        imgIndexes.sort((a, b) => b - a);
 
-        if (uniqueIndexes.length > 0) {
-            for (let i of uniqueIndexes) {
+        if (imgIndexes.length > 0) {
+            for (let i of imgIndexes) {
                 adImages2.splice(i, 1);
             }
         }

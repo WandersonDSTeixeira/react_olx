@@ -21,7 +21,7 @@ export const ModalArea = styled.div<Props>`
     .container {
         background-color: #FFF;
         border-radius: 3px;
-        padding: 10px;
+        padding: 20px;
         box-shadow: 0px 0px 3px #999;
         max-width: 1000px;
         width: 700px;
@@ -37,7 +37,7 @@ export const ModalArea = styled.div<Props>`
             .area {
                 display: flex;
                 align-items: center;
-                padding: 10px;
+                padding: 7px;
 
                 .areaTitle {
                     width: 200px;
@@ -98,9 +98,9 @@ export const ModalArea = styled.div<Props>`
                     }
 
                     img {
-                        width: 25%;
+                        width: 23%;
                         border-radius: 5px;
-                        padding: 2px;
+                        margin-right: 3px;
                         cursor: pointer;
 
                         &:hover {
@@ -159,7 +159,7 @@ export const ModalArea = styled.div<Props>`
                         outline: 0;
                         font-size: 14px;
                         cursor: pointer;
-                        width: 150px;
+                        width: 120px;
                         height: 30px;
                         padding: 5px 10px;
                         border-radius: 4px;
@@ -174,7 +174,7 @@ export const ModalArea = styled.div<Props>`
                         outline: 0;
                         font-size: 14px;
                         cursor: pointer;
-                        width: 200px;
+                        width: 170px;
                         height: 30px;
                         padding: 5px 10px;
                         border-radius: 4px;
@@ -185,7 +185,7 @@ export const ModalArea = styled.div<Props>`
         }
     }
 
-    @media (max-width: 750px) {
+    @media (max-width: 700px) {
 
         .container form .area {
             flex-direction: column;
@@ -240,6 +240,13 @@ export const ModalArea = styled.div<Props>`
                     margin-bottom: 10px;
                 }
             }
+        }
+    }
+
+    @media (max-width: 450px) {
+
+        .container form .area .areaInput img {
+            width: 30%;
         }
     }
 `;

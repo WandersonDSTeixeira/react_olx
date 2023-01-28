@@ -20,7 +20,7 @@ export const ModalArea = styled.div<Props>`
     .container {
         background-color: #FFF;
         border-radius: 3px;
-        padding: 20px 20px;
+        padding: 20px;
         box-shadow: 0px 0px 3px #999;
         max-width: 1000px;
         width: 600px;
