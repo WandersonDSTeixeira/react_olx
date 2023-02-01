@@ -5,7 +5,6 @@ import { BACKENDPORT } from '../routes/Routes';
 
 export const useApi = () => ({
     login: async (email: string, password: string) => {
-        const token = Cookies.get('token');
         const res = await fetch(`${BACKENDPORT}/user/signin`, {
             method: 'POST',
             headers: {
@@ -17,7 +16,6 @@ export const useApi = () => ({
         return json;
     },
     register: async (name: string, email: string, password: string, state: string) => {
-        const token = Cookies.get('token');
         const res = await fetch(`${BACKENDPORT}/user/signup`, {
             method: 'POST',
             headers: {
