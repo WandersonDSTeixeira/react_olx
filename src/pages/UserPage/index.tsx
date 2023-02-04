@@ -75,15 +75,12 @@ const UserPage = () => {
     }, []);
 
     useEffect(() => {
-        const updateModalInfo = (): void => {
-            setName(userName);
-            setState(userState);
-        }
-        updateModalInfo();
+        setName(userName);
+        setState(userState);
     }, [userName, userState]);
 
     useEffect(() => {
-        if (!userAdsModalOpen) {
+        if (!userInfoModalOpen) {
             setError('');
             setName(userName);
             setState(userState);
@@ -130,19 +127,16 @@ const UserPage = () => {
     }, [userAdsModalOpen]);
 
     useEffect(() => {
-        const handleAdsModalInfo = () => {
-            setTitle(userAds[adIndex]?._doc.title);
-            setPrice(userAds[adIndex]?._doc.price);
-            setPriceNegotiable(userAds[adIndex]?._doc.priceNegotiable);
-            setDescription(userAds[adIndex]?._doc.description);
-            setStatus(userAds[adIndex]?._doc.status);
-            setCategory(userAds[adIndex]?._doc.category);
-            setCategoryName(userAds[adIndex]?._doc.categoryName);
-            setCategoryValue(userAds[adIndex]?._doc.category);
-            setAdImages(userAds[adIndex]?._doc.images);
-            imgIndexes.length = 0;
-        };
-        handleAdsModalInfo();
+        setTitle(userAds[adIndex]?._doc.title);
+        setPrice(userAds[adIndex]?._doc.price);
+        setPriceNegotiable(userAds[adIndex]?._doc.priceNegotiable);
+        setDescription(userAds[adIndex]?._doc.description);
+        setStatus(userAds[adIndex]?._doc.status);
+        setCategory(userAds[adIndex]?._doc.category);
+        setCategoryName(userAds[adIndex]?._doc.categoryName);
+        setCategoryValue(userAds[adIndex]?._doc.category);
+        setAdImages(userAds[adIndex]?._doc.images);
+        imgIndexes.length = 0;
     }, [adIndex]);
 
     const handleEditButton = (index: number) => {
