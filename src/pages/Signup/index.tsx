@@ -4,9 +4,13 @@ import { useState, useEffect } from 'react';
 import { useApi } from '../../helpers/useApi';
 import { doLogin } from '../../helpers/AuthHandler';
 import { StateType } from '../../types/StateType';
+import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../context';
 
 const Signup = () => {
     const api = useApi();
+    const navigate = useNavigate();
+    const { refreshUser, setRefreshUser } = useAppContext();
 
     const [name, setName] = useState('');
     const [stateLoc, setStateLoc] = useState('');
@@ -42,7 +46,8 @@ const Signup = () => {
             setError(json.error);
         } else {
             doLogin(json.token);
-            window.location.href = '/';
+            setRefreshUser(!refreshUser);
+            navigate('/');
         }
         setDisabled(false);
     }

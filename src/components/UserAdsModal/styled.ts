@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 type Props = {
-    open: boolean;
-    confirmDeletion: boolean;
+    userAdsModalOpen: boolean;
+    confirmAdDelete: boolean;
 }
 
 export const ModalArea = styled.div<Props>`
-    display: ${props => props.open ? 'flex' : 'none'};
+    display: ${props => props.userAdsModalOpen ? 'flex' : 'none'};
     position: fixed;
     top: 0;
     bottom: 0;
@@ -131,7 +131,7 @@ export const ModalArea = styled.div<Props>`
                     }
 
                     .deleteBtn {
-                        display: ${props => props.confirmDeletion ? 'none' : 'inline-block' };
+                        display: ${props => props.confirmAdDelete ? 'none' : 'inline-block' };
                         background-color: #FFF;
                         color: #000;
                         border: 0;
@@ -152,7 +152,7 @@ export const ModalArea = styled.div<Props>`
                     }
 
                     .confirmDelBtn {
-                        display: ${props => props.confirmDeletion ? 'inline-block' : 'none' };
+                        display: ${props => props.confirmAdDelete ? 'inline-block' : 'none' };
                         background-color: #FFF;
                         color: #E2231F;
                         border: 0;
@@ -167,7 +167,7 @@ export const ModalArea = styled.div<Props>`
                     }
 
                     .cancelDelBtn {
-                        display: ${props => props.confirmDeletion ? 'inline-block' : 'none' };
+                        display: ${props => props.confirmAdDelete ? 'inline-block' : 'none' };
                         background-color: #FFF;
                         color: #006FCE;
                         border: 0;

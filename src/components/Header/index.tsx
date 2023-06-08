@@ -1,14 +1,31 @@
 import { HeaderArea } from './styled';
-import { Link } from 'react-router-dom';
-import { isLogged } from '../../helpers/AuthHandler';
+import { Link, useNavigate } from 'react-router-dom';
 import { doLogout } from '../../helpers/AuthHandler';
+import { useAppContext } from '../../context';
+import { useEffect } from 'react';
+import { useApi } from '../../helpers/useApi';
+import Cookies from 'js-cookie';
 
 const Header = () => {
-    let logged = isLogged();
+    const api = useApi();
+    const navigate = useNavigate();
+    const { user, setUser, refreshUser } = useAppContext();
+
+    useEffect(() => {
+        const getUserInfo = async () => {
+            const token = Cookies.get('token');
+            if (token) {
+                const userInfo = await api.getUserInfo();
+                setUser({ name: userInfo.name, email: userInfo.email, state: userInfo.state });
+            }
+        }
+        getUserInfo();
+    }, [refreshUser]);
 
     const handleLogout = () => {
         doLogout();
-        window.location.href = '/';
+        setUser(null);
+        navigate('/');
     }
 
     return (
@@ -23,7 +40,7 @@ const Header = () => {
                 </div>
                 <nav>
                     <ul>
-                        {logged &&
+                        {user &&
                             <>
                                 <li>
                                     <Link to='/user/me'>Minha Conta</Link>
@@ -36,7 +53,7 @@ const Header = () => {
                                 </li>
                             </>
                         }
-                        {!logged &&
+                        {!user &&
                             <>
                                 <li>
                                     <Link to='/user/signin'>Login</Link>

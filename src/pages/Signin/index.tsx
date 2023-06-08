@@ -3,9 +3,13 @@ import { PageContainer, PageTitle, ErrorMessage } from '../../components/MainCom
 import { ChangeEvent, useState } from 'react';
 import { useApi } from '../../helpers/useApi';
 import { doLogin } from '../../helpers/AuthHandler';
+import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../context';
 
 const Signin = () => {
     const api = useApi();
+    const navigate = useNavigate();
+    const { refreshUser, setRefreshUser } = useAppContext();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -23,7 +27,8 @@ const Signin = () => {
             setError(json.error);
         } else {
             doLogin(json.token);
-            window.location.href = '/';
+            setRefreshUser(!refreshUser);
+            navigate('/');
         }
         setDisabled(false);
     }

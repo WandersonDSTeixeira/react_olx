@@ -48,6 +48,7 @@ export const useApi = () => ({
     },
     addAd: async (fData: FormData) => {
         const token = Cookies.get('token');
+
         const res = await fetch(`${BACKENDPORT}/ad/add`, {
             method: 'POST',
             headers: {
