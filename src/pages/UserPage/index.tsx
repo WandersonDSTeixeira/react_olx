@@ -16,12 +16,15 @@ const UserPage = () => {
     const [adIndex, setAdIndex] = useState<number>(9999);
     const [userInfoModalOpen, setUserInfoModalOpen] = useState<boolean>(false);
     const [userAdsModalOpen, setUserAdsModalOpen] = useState<boolean>(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const getUserInfo = async () => {
+            setLoading(true);
             const userInfo = await api.getUserInfo();
             setUser({ name: userInfo.name, email: userInfo.email, state: userInfo.state });
             setUserAds(userInfo.ads);
+            setLoading(false);
         }
         getUserInfo();
     }, [refreshUser]);
@@ -76,7 +79,10 @@ const UserPage = () => {
             <PageContainer>
                 <UserAdsArea>
                     <h2>Meus Anúncios</h2>
-                    {userAds.length === 0 &&
+                    {loading &&
+                        <div>Carregando...</div>
+                    }
+                    {!loading && userAds.length === 0 &&
                         <div>Você ainda não tem anúncios.</div>
                     }
                     <div className='list'>
