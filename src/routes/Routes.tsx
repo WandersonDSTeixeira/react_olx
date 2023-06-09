@@ -9,7 +9,7 @@ import Ads from '../pages/Ads';
 import UserPage from '../pages/UserPage';
 import { RequireAuth } from '../RequireAuth';
 
-export const BACKENDPORT = 'http://localhost:3001';
+export const BACKENDPORT = 'https://nodeolx-production.up.railway.app';
 
 export default () => {
     return (
